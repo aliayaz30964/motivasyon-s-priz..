@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Robin — Ace'den</title>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#F4E9D6;--ink:#2b2b2b;--accent:#8b3e2f}
+    html,body{height:100%;margin:0;font-family:'Patrick Hand', Handlee, comic-sans, sans-serif;background:linear-gradient(180deg,#f7efe6 0%, #efe1c9 100%);color:var(--ink)}
+    .page{max-width:780px;margin:32px auto;padding:28px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.12);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));border:4px dashed rgba(139,62,47,0.12)}
+    header{display:flex;align-items:center;gap:18px}
+    .sketch{width:92px;height:92px;border-radius:12px;background:linear-gradient(135deg,#fff 0%, #f2f0f8 100%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -6px 18px rgba(0,0,0,0.04)}
+    .title{font-size:28px;color:var(--accent);letter-spacing:1px}
+    p.lead{font-size:18px;margin:12px 0 18px}
+    .card{background:rgba(255,255,255,0.85);padding:18px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+    .map{margin:18px 0;padding:14px;border-radius:12px;background-image:repeating-linear-gradient(45deg, rgba(139,62,47,0.02) 0 6px, transparent 6px 12px)}
+    .button{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;cursor:pointer;border:none;font-size:16px}
+    .secret{margin-top:14px;padding:12px;border-radius:10px;background:linear-gradient(90deg,#fff8f6,#fffefc);display:none}
+    footer{margin-top:18px;font-size:14px;color:#5a5a5a}
+    /* little svg book */
+    .book svg{width:72px;height:72px}
+    /* confetti */
+    .confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+    .note{font-size:16px}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="sketch book" aria-hidden>
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="8" width="44" height="48" rx="4" fill="#fff" stroke="#d7c2b1"/>
+          <path d="M10 12c8 0 14-4 22 0v36c-8-4-14 0-22 0z" fill="#f7efe6"/>
+          <line x1="20" y1="20" x2="44" y2="20" stroke="#e6d0c1" stroke-linecap="round"/>
+          <line x1="20" y1="28" x2="44" y2="28" stroke="#e6d0c1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title">Bir Korsan Aşkı — Robin</div>
+        <div style="font-size:12px;color:#6a6a6a">Ace'den: Küçük, özel bir sürpriz</div>
+      </div>
+    </header><div class="card">
+  <p class="lead">Sevgilim, biliyorum Robin senin en sevdiğin karakter — zekâsı, sakinliği ve derin bilgisiyle kalpleri fethediyor. Sana özel küçük bir şey hazırladım.</p>
+
+  <div class="map">
+    <strong>Harita notu:</strong>
+    <p class="note">Robin gibi bilgeliğe ve gizemli bir cazibeye sahip olan kadınlara; benim pusulam her zaman sana dönük. Aşağıdaki sürprizi aç ve küçük bir mesaj al.</p>
+    <button class="button" id="revealBtn">Sürprizi aç</button>
+    <div class="secret" id="secret">
+      <p>Robin'in merakı gibisin — her gün seni daha fazla tanımak istiyorum. Sen benim en değerli keşfimsin. 💌</p>
+      <p style="margin-top:8px;font-weight:700">— Ace</p>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+    <div>
+      <strong>Robin'e küçük bir saygı duruşu</strong>
+      <p style="margin:6px 0 0;font-size:14px;color:#4a4a4a">(Burada Robin'in bilgeliğini ve bağımsız ruhunu çağrıştıran sade bir tasarım kullandım — hayranlığın için.)</p>
+    </div>
+  </div>
+
+  <footer>
+    <div>Nasıl paylaşırsın: Sağ üstten dosyayı "Farklı Kaydet" yapıp .html olarak saklayabilirsin. Veya istersen ben GitHub Pages/Netlify ile link haline getirme adımlarını anlatırım.</div>
+  </footer>
+</div>
+
+  </div>  <div class="confetti" id="confetti"></div>  <script>
+    const btn = document.getElementById('revealBtn');
+    const secret = document.getElementById('secret');
+    btn.addEventListener('click', ()=>{
+      secret.style.display = 'block';
+      btn.style.display = 'none';
+      launchConfetti();
+    });
+
+    // tiny confetti
+    function launchConfetti(){
+      const container = document.getElementById('confetti');
+      for(let i=0;i<36;i++){
+        const el = document.createElement('div');
+        el.style.position='absolute';
+        el.style.left=(Math.random()*100)+'%';
+        el.style.top='-10px';
+        el.style.width='8px';
+        el.style.height='12px';
+        el.style.opacity=0.95;
+        el.style.transform='rotate('+ (Math.random()*360) +'deg)';
+        el.style.background = ['#d16a57','#f2c57c','#8fbf9f','#c79bd3'][Math.floor(Math.random()*4)];
+        el.style.borderRadius='2px';
+        el.style.transition='transform 2.6s linear, top 2.6s linear, left 2.6s linear, opacity 0.8s linear';
+        container.appendChild(el);
+        setTimeout(()=>{
+          el.style.top = (60 + Math.random()*60) + '%';
+          el.style.left = (Math.random()*100) + '%';
+          el.style.transform = 'rotate(' + (Math.random()*720) + 'deg)';
+          el.style.opacity = 0.0;
+        },20 + Math.random()*200);
+        setTimeout(()=>container.removeChild(el),3200);
+      }
+    }
+  </script></body>
+</html>

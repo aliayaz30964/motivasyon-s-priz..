@@ -3,16 +3,127 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sürpriz Not</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Sueda — Benim İlhamım</title>
+  <style>
+  :root{
+    --bg:#f8ebe6;
+    --card:#fff;
+    --accent:#8b3b2f;
+    --muted:#7b7b7b;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    margin:0;
+    padding:40px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+  }
+  .card{
+    background:var(--card);
+    width:100%;
+    max-width:520px;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    text-align:center;
+  }
+  .avatar{
+    width:160px;
+    height:160px;
+    margin:0 auto 18px;
+    display:block;
+  }
+  .title{
+    font-family: 'Segoe Script', cursive;
+    color:var(--accent);
+    margin:6px 0 10px;
+    font-size:28px;
+  }
+  .lead{
+    color:var(--muted);
+    line-height:1.5;
+    margin:0 0 18px;
+    font-size:16px;
+  }
+  .surprise{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    margin-bottom:16px;
+  }
+  .note{
+    background:#fff4f2;
+    padding:14px;
+    border-radius:8px;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  .footer{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:6px;
+  }
+  </style>
 </head>
 <body>
   <main class="card">
-    <div class="image-wrap">
-      <img id="hero" src="assets/robin.png" alt="Robin" />
+    <div class="avatar">
+      <!-- Inline SVG of stylized Robin -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="160" height="160" role="img" aria-label="Stylized Robin fan art">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#fbe8ee"/>
+            <stop offset="1" stop-color="#e6f2fb"/>
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g)"/>
+        <path d="M200 75c-40 0-70 35-70 78 0 24 10 46 26 62 22 22 52 34 84 34s62-12 84-34c16-16 26-38 26-62 0-43-30-78-70-78-12 0-24 3-34 8-10-5-22-8-34-8z"
+              fill="#2b3340" opacity="0.95"/>
+        <ellipse cx="200" cy="160" rx="56" ry="70" fill="#ffd9d9"/>
+        <g transform="translate(0,10)" fill="#2b3340" opacity="0.9">
+          <ellipse cx="180" cy="155" rx="8" ry="5"/>
+          <ellipse cx="220" cy="155" rx="8" ry="5"/>
+        </g>
+        <path d="M180 185c8 8 32 8 40 0" stroke="#2b3340" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M140 230c20 12 40 20 60 20s40-8 60-20" fill="#7b3b2f" opacity="0.95"/>
+        <g transform="translate(130,80)" fill="#fff" opacity="0.15">
+          <rect x="20" y="10" width="140" height="18" rx="4"/>
+          <rect x="30" y="28" width="120" height="6" rx="3"/>
+        </g>
+      </svg>
     </div>
-    <h1>Robin — Benim İlhamım</h1>
-    <p id="note">Sen aklına koydun, her şeyi başaracaksın. Ben her zaman senin yanında olacağım, ne olursa olsun. 💖</p>
+
+    <h1 class="title">Sueda — Benim İlhamım</h1>
+    <p class="lead">
+      Sevgilim, Sueda gibi zarif, güçlü ve bilge birisin.
+      Seninle olmak bana en değerli hazinemi bulmuşum gibi hissettiriyor. 💖
+    </p>
+
+    <button class="surprise" onclick="openSurprise()">Sürprizi Aç 🎁</button>
+
+    <div class="note" id="surpriseText" style="display:none;">
+      Sen benim sonsuz keşfim, en güzel hikâyemsin.
+      ✉️ — Ace
+    </div>
+
+    <footer class="footer">Senin için hazırlandı 💕</footer>
   </main>
+
+  <script>
+    function openSurprise(){
+      const note = document.getElementById('surpriseText');
+      note.style.display = 'block';
+      note.innerHTML = "<strong>Robin (One Piece)</strong> — 'Güçlü, zeki ve nazik.'<br>💌 — Senin için seçildi, Sueda.";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
